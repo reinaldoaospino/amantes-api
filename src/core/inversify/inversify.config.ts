@@ -16,6 +16,8 @@ import { PostController } from "../../controllers/PostController";
 import { LoginController } from "../../controllers/LoginController";
 import { IPostMapper } from "../interfaces/controllers/mappers/IPostMapper";
 import { PostMapper } from "../../controllers/mappers/PostMapper";
+import { IPostRepositoryMapper } from "../interfaces/repository/mappers/IPostRepositoryMapper";
+import { PostRepositoryMapper } from "../../repository/mappers/PostRepositoryMapper";
 
 const myContainer = new Container();
 
@@ -35,5 +37,6 @@ myContainer.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
 
 //Mappers
 myContainer.bind<IPostMapper>(TYPES.IPostMapper).to(PostMapper);
+myContainer.bind<IPostRepositoryMapper>(TYPES.IPostRepositoryMapper).to(PostRepositoryMapper);
 
 export { myContainer };

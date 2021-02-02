@@ -7,5 +7,6 @@ export const TYPES = {
   IPostRepository: Symbol.for("IPostRepository"),
   IPostService: Symbol.for("IPostService"),
   IPostController: Symbol.for("IPostController"),
-  IPostMapper: Symbol.for("IPostMapper")
+  IPostMapper: Symbol.for("IPostMapper"),
+  IPostRepositoryMapper: Symbol.for("IPostRepositoryMapper")
 };

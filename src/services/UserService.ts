@@ -15,7 +15,7 @@ export class UserService implements IUserService {
  async login(username: string, password: string): Promise<OperationResponse> {
 
     const user = await this._repository.login(username, password);
-    console.log(user)
+    
     if (!user) {
       throw new Error("User or password incorrect");
     }

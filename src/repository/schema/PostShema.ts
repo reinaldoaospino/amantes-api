@@ -1,6 +1,6 @@
 import mongoose, { Schema, model } from "mongoose";
 
-export interface Post extends mongoose.Document {
+export interface IPostSchema extends mongoose.Document {
   title: string;
   content: string;
   type   : string;
@@ -9,7 +9,7 @@ export interface Post extends mongoose.Document {
   main: boolean;
 }
 
-const PostShema = new Schema(
+const PostSchema = new Schema(
   {
     title   : String,
     content : String,
@@ -23,4 +23,4 @@ const PostShema = new Schema(
   }
 );
 
-export default model<Post>("Post", PostShema);
+export default model<IPostSchema>("Post", PostSchema);
