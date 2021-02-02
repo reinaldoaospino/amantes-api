@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "701ce9b8-961b-427a-9f6d-e46dd0ab46dd",
+		"name": "amantes-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"reilele\",\r\n    \"password\": \"Chawla-22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/login",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/post",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/post/6018a2e70e3ac338a406abf2",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"6018a2e70e3ac338a406abf2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Holaa\",\r\n    \"content\": \"asoiuhjuosanjbkodsabjasdb\", \r\n    \"type\"   : \"Articulo\",\r\n    \"img\": \"img jkasnjasd\",\r\n    \"main\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/post",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\":  \"6018a2e70e3ac338a406abf2\",\r\n    \"title\": \"Holaa2222\",\r\n    \"content\": \"HOLA PPERINOLA\",    \r\n    \"img\": \"img jkasnjasd\",\r\n    \"main\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/post",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/post/6018a2e70e3ac338a406abf2",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"6018a2e70e3ac338a406abf2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
