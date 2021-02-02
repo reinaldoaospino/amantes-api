@@ -1,5 +1,6 @@
-import { Request, Response } from "express";
+import { Request } from "express";
+import { OperationResponse } from "../../models/reponse/OperationResponse";
 
-export interface IUserController {
-    login(req: Request, res: Response): void
+export interface ILoginController {
+  login(req: Request): Promise<OperationResponse>;
 }
