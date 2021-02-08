@@ -13,7 +13,7 @@ export class PostRepositoryMapper implements IPostRepositoryMapper {
         _id: data._id,
         title: data.title,
         content: data.content,
-        type: data.type,
+        _idType: data.type,
         img: data.img,
         main: data.main
       });
@@ -26,6 +26,7 @@ export class PostRepositoryMapper implements IPostRepositoryMapper {
 
   mapPost(postSchema: IPostSchema): Post {
     return new Post({
+      _id : postSchema.id,
       title: postSchema?.title,
       content: postSchema?.content,
       img: postSchema?.img,

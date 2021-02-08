@@ -5,6 +5,10 @@ import { StatusResponse } from "./core/models/reponse/ErrorResponse";
 import { InversifyExpressServer } from "inversify-express-utils";
 import { Mongoose } from "mongoose";
 import mongoose from "mongoose";
+import compression from "compression";
+import helmet from "helmet";
+import cors from "cors";
+import morgan from "morgan";
 
 class Server {
   private app: express.Application;
@@ -19,16 +23,17 @@ class Server {
 
   public start() {
     this.app = this.server.build();
+
     this.mongoose
       .connect(
         "mongodb+srv://reinaldo:Chawla-11@cluster0.ndton.mongodb.net/amantesDB?retryWrites=true&w=majority",
         {
           useNewUrlParser: true,
-          useUnifiedTopology: true
+          useUnifiedTopology: true,
         }
       )
-      .then(db => console.log("Db es is connected")) 
-      .catch(err => console.log("Error conecting to Db", err));
+      .then((db) => console.log("Db es is connected"))
+      .catch((err) => console.log("Error conecting to Db", err));
 
     this.app.listen(this.app.get("port"), () => {
       console.log("Server on port", this.app.get("port"));
@@ -38,16 +43,20 @@ class Server {
   private config() {
     this.server = new InversifyExpressServer(myContainer);
 
-    this.server.setConfig(app => {
+    this.server.setConfig((app) => {
       app.set("port", process.env.PORT || 3000);
       app.use(express.json());
+      app.use(compression());
+      app.use(helmet());
+      app.use(morgan("dev"));
+      app.use(cors());
     });
 
-    this.server.setErrorConfig(app => {
+    this.server.setErrorConfig((app) => {
       app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         const error = new StatusResponse({
           code: 500,
-          message: err.message
+          message: err.message,
         });
 
         res.status(500).json(new ResponseBase({ data: null, status: error }));

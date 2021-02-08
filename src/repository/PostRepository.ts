@@ -9,7 +9,9 @@ import PostSchema from "./schema/PostShema";
 export class PostRepository implements IPostRepository {
   _mapper: IPostRepositoryMapper;
 
-  constructor(@inject(TYPES.IPostRepositoryMapper) mapper: IPostRepositoryMapper) {
+  constructor(
+    @inject(TYPES.IPostRepositoryMapper) mapper: IPostRepositoryMapper
+  ) {
     this._mapper = mapper;
   }
 
@@ -22,14 +24,16 @@ export class PostRepository implements IPostRepository {
   async get(id: string): Promise<Post> {
     const response = await PostSchema.findById(id);
 
-    return this._mapper.mapPost(response);
+    if (response) return this._mapper.mapPost(response);
+
+    throw new Error("The post doesn't exist");
   }
 
-  async create(post: Post): Promise<void> {    
+  async create(post: Post): Promise<void> {
     await PostSchema.create({
       title: post.title,
       content: post.content,
-      type: post.type,
+      type: post._idType,
       img: post.img,
       main: post.main,
       publicAt: post.publicAt,
@@ -37,10 +41,17 @@ export class PostRepository implements IPostRepository {
   }
 
   async update(post: Post): Promise<void> {
-    await PostSchema.findByIdAndUpdate(post._id, post);
+    const result = await PostSchema.findByIdAndUpdate(post._id, post);
+    if (!result) {
+      throw new Error("The post doesn't exist");
+    }
   }
 
   async delete(id: string): Promise<void> {
-    await PostSchema.findByIdAndDelete(id);
+    const result = await PostSchema.findByIdAndDelete(id);
+
+    if (!result) {
+      throw new Error("The post doesn't exist");
+    }
   }
 }

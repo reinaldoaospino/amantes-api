@@ -4,7 +4,7 @@ export class Post extends BaseTest {
   _id     : any;
   title   : string;
   content : string;
-  type    : string;
+  _idType    : string;
   publicAt: Date;
   img     : string;
   main    : boolean;
